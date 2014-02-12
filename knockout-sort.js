@@ -100,18 +100,20 @@
             };
         }
       
-        do {
-            var compare = compareFunction(item, array[m]);
-            if (compare > 0) {
-                lo = m + 1;
-            } else if (compare < 0) {
-                hi = m;
-            } else {
-                break;
-            }
+        if (hi > 0) {
+            do {
+                var compare = compareFunction(item, array[m]);
+                if (compare > 0) {
+                    lo = m + 1;
+                } else if (compare < 0) {
+                    hi = m;
+                } else {
+                    break;
+                }
         
-            m = Math.floor(lo + ((hi - lo) / 2));
-        } while (lo < hi);
+                m = Math.floor(lo + ((hi - lo) / 2));
+            } while (lo < hi);
+        }
       
         array.splice(m, 0, item);
         return m;
